@@ -13245,7 +13245,8 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 .main-sidebar .logo-xs,
 .main-sidebar .logo-xl,
 .sidebar .user-panel .info {
-  transition: margin-left 0.3s linear, opacity 0.3s ease, visibility 0.3s ease;
+    font-size: 18px;
+    transition: margin-left 0.3s linear, opacity 0.3s ease, visibility 0.3s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

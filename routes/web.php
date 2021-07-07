@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/links-uteis', [App\Http\Controllers\LinkController::class, 'index'])->name('index');
+Route::get('/links-uteis/create',  [App\Http\Controllers\LinkController::class, 'create'])->name('link.create');
+Route::get('/links-uteis/edit',  [App\Http\Controllers\LinkController::class, 'edit'])->name('link.edit');
+Route::post('/links-uteis/{id}',  [App\Http\Controllers\LinkController::class, 'store'])->name('link.store');
