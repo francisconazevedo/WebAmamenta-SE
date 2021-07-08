@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\MilkbankController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/links', LinkController::class);
+Route::resource('/milkbanks', MilkbankController::class);

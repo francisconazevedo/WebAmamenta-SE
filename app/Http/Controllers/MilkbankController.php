@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Milkbank;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MilkbankController extends Controller
 {
@@ -14,7 +15,9 @@ class MilkbankController extends Controller
      */
     public function index()
     {
-        return null;
+        $milkbanks = Milkbank::all();
+
+        return view('milkbank.index', compact('milkbanks'));
     }
 
     /**
@@ -24,7 +27,7 @@ class MilkbankController extends Controller
      */
     public function create()
     {
-        return null;
+        return view('milkbank.create');
     }
 
     /**
@@ -35,7 +38,21 @@ class MilkbankController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $request->validate([
+            'name' => 'required',
+            'cep' => 'required',
+            'address' => 'required',
+            'number' => 'required',
+            'complement' => 'required',
+            'contact' => 'required',
+        ]);
+
+        Milkbank::create($request->all());
+
+        Session::flash('flash_message', 'Milkbank adicionado com sucesso!');
+
+        $milkbanks = Milkbank::all();
+        return view('milkbank.index', compact('milkbanks'));
     }
 
     /**
@@ -55,31 +72,41 @@ class MilkbankController extends Controller
      * @param  \App\Models\Milkbank  $milkbank
      * @return \Illuminate\Http\Response
      */
-    public function edit(Milkbank $milkbank)
+    public function edit($id)
     {
-        return $milkbank;
+        $milkbank = Milkbank::where('id', $id)->first();
+        return view('milkbank.edit', compact('milkbank'));
     }
+
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Milkbank  $milkbank
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Milkbank $milkbank)
     {
-        return [$request, $milkbank];
+        $request->validate([
+            'name' => 'required',
+            'cep' => 'required',
+            'address' => 'required',
+            'number' => 'required',
+            'complement' => 'required',
+            'contact' => 'required',
+        ]);
+        $milkbank->update($request->all());
+
+        Session::flash('flash_message', 'Milkbank editado com sucesso!');
+        return redirect()->route('milkbanks.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Milkbank  $milkbank
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Milkbank $milkbank)
     {
-        return null;
+        $milkbank->delete();
+
+        Session::flash('flash_message', 'Milkbank removido com sucesso!');
+        return redirect()->route('milkbanks.index');
     }
 }

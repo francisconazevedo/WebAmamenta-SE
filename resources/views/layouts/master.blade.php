@@ -31,7 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                     <li class="nav-item">
-                        <a href="/links-uteis" class="nav-link">
+                        <a href="/links" class="nav-link">
                             <i class="nav-icon fas fa-link"></i>
                             <p>
                                 Links Úteis
@@ -39,7 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/milkbanks" class="nav-link">
                             <i class="nav-icon fas fa-hand-holding-heart"></i>
                             <p>
                                 Bancos de Leite
@@ -47,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="" class="nav-link">
                             <i class="nav-icon  fas fa-list-ul"></i>
                             <p>
                                 Mitos ou Verdades
@@ -55,7 +55,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/Configuration/1/edit" class="nav-link">
                             <i class="nav-icon far fa-plus-square"></i>
                             <p>
                                 Configuração
