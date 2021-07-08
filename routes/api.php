@@ -20,4 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('donaters', DonaterController::class)->only('store');
+Route::prefix('v1')->group(function (){
+   Route::apiResource('donaters', DonaterController::class)->only('store');
+});
