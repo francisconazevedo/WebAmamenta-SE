@@ -35,7 +35,19 @@ class DonaterController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $request->validate([
+            'name' => 'required',
+            'second_name' => 'required',
+            'cep' => 'required',
+            'address' => 'required',
+            'number' => 'required',
+            'complement' => 'required',
+            'contact' => 'required',
+        ]);
+
+        $donater = Donater::create($request->all());
+
+        return $donater;
     }
 
     /**
