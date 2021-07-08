@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\MilkbankController;
+use App\Http\Controllers\MythOrTruthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/links', LinkController::class);
 Route::resource('/milkbanks', MilkbankController::class);
+Route::resource('/mythsortruths', MythOrTruthController::class);
