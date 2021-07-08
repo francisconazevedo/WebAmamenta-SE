@@ -27,7 +27,7 @@ class LinkController extends Controller
      */
     public function create()
     {
-        return view('link.form');
+        return view('link.create');
     }
 
     /**
@@ -38,9 +38,13 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $request->validate([
+            'title' => 'required',
+            'link' => 'required',
+            'description' => 'required',
+        ]);
 
-        Link::create($input);
+        Link::create($request->all());
 
         Session::flash('flash_message', 'Link adicionado com sucesso!');
 
@@ -51,47 +55,53 @@ class LinkController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Configuration  $configuration
+     * @param  \App\Models\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function show(Configuration $configuration)
+    public function show(Link $link)
     {
-        return $configuration;
+        return $link;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Configuration  $configuration
+     * @param  \App\Models\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        dd($_GET);
-        $link = Link::all()->first();
-        return view('link.form', compact('link'));
+        $link = Link::where('id', $id)->first();
+        return view('link.edit', compact('link'));
     }
+
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Configuration  $configuration
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Configuration $configuration)
+    public function update(Request $request, Link $link)
     {
-        return [$request, $configuration];
+        $request->validate([
+            'title' => 'required',
+            'link' => 'required',
+            'description' => 'required',
+        ]);
+
+        $link->update($request->all());
+
+        Session::flash('flash_message', 'Link editado com sucesso!');
+        return redirect()->route('links.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Configuration  $configuration
-     * @return \Illuminate\Http\Response
      */
-    public function destroy(Configuration $configuration)
+    public function destroy(Link $link)
     {
-        return $configuration;
+        $link->delete();
+
+        Session::flash('flash_message', 'Link removido com sucesso!');
+        return redirect()->route('links.index');
     }
 }

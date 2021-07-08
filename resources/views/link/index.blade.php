@@ -2,7 +2,7 @@
 @section('header-title', 'Links Úteis')
 
 @section('content')
-    <a class="btn btn-primary content animate__animated animate__flipInX" href="{{ route('link.create') }}" style=" margin: 15px; float: right;  background: #ff6347; border-color: #ff6347;">
+    <a class="btn btn-primary content animate__animated animate__flipInX" href="{{ route('links.create') }}" style=" margin: 15px; float: right;  background: #ff6347; border-color: #ff6347;">
         <i class="fas fa-plus" aria-hidden="true"></i> Cadastrar
     </a>
     @if(Session::has('flash_message'))
@@ -28,25 +28,25 @@
                     <td>{{ $link->link }}</td>
                     <td style="display: flex">
                         <a class="btn btn-sm btn-warning mr-1" style="background: #fff48c; border-color: #fff48c"
-                           href="{{ route('link.edit', $link->id) }}">
+                           href="{{ route('links.edit', $link->id) }}">
                             <i class="far fa-edit" aria-hidden="true"></i>
                         </a>
+                        <form action="{{ route('links.destroy',$link->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" ata-confirm="Tem certeza?" style="background: #ff6561; border-color: #ff6561"
+                                    class="btn btn-sm btn-danger" rel="nofollow"
+                                    data-method="delete" >
+                                <i class="far fa-trash-alt" aria-hidden="true"></i>
+                            </button>
+                        </form>
+
 
                         <!-- Remover -->
-                        <a data-confirm="Tem certeza?" style="background: #ff6561; border-color: #ff6561"
-                           class="btn btn-sm btn-danger" rel="nofollow"
-                           data-method="delete"
-                           href="#"
-                           onclick="event.preventDefault(); document.getElementById('delete-form-1').submit();">
-                            <i class="far fa-trash-alt" aria-hidden="true"></i>
-                        </a>
 
-                        <form id="delete-form-1"
-                              action="#" method="POST"
-                              style="display: none;">
-                            @csrf
-                            @method('delete')
-                        </form>
+
+
                         <!-- / Remover -->
                     </td>
                 </tr>
