@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/donaters', [DonaterController::class, 'store'])->name('donater.store');
+Route::resource('donaters', DonaterController::class)->only('store');

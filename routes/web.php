@@ -4,6 +4,7 @@ use App\Http\Controllers\LinkController;
 use App\Http\Controllers\MilkbankController;
 use App\Http\Controllers\MythOrTruthController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +20,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/links', LinkController::class);
-Route::resource('/milkbanks', MilkbankController::class);
-Route::resource('/mythsortruths', MythOrTruthController::class);
+Route::get('/logout', function () {
+    Auth::logout();
+    return Redirect::to('login');
+});
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::resource('/links', LinkController::class)->middleware('auth');
+Route::resource('/milkbanks', MilkbankController::class)->middleware('auth');
+Route::resource('mythsortruths', MythOrTruthController::class)->middleware('auth');

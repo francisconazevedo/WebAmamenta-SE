@@ -14,17 +14,7 @@ class DonaterController extends Controller
      */
     public function index()
     {
-        return null;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return null;
+        //
     }
 
     /**
@@ -45,53 +35,39 @@ class DonaterController extends Controller
             'contact' => 'required',
         ]);
 
-        $donater = Donater::create($request->all());
-
-        return $donater;
+        return Donater::create($request->all());;
     }
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Donater  $donater
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Donater $request)
+    public function show($id)
     {
-        return $request;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Donater  $donater
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Donater $request)
-    {
-        return $request;
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Donater  $donater
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Donater $donater)
+    public function update(Request $request, $id)
     {
-        return [$request, $donater];
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Donater  $donater
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Donater $donater)
+    public function destroy($id)
     {
-        return $donater;
+        //
     }
 }
