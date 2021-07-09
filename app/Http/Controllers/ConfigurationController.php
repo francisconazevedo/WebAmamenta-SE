@@ -82,4 +82,9 @@ class ConfigurationController extends Controller
     {
         return $configuration;
     }
+
+    public function howDonate()
+    {
+        return true;
+    }
 }

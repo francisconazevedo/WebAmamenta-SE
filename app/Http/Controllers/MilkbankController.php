@@ -117,4 +117,9 @@ class MilkbankController extends Controller
         Session::flash('flash_message', 'Milkbank removido com sucesso!');
         return redirect()->route('milkbanks.index');
     }
+
+    public function showMilkbank()
+    {
+        return Milkbank::all();
+    }
 }

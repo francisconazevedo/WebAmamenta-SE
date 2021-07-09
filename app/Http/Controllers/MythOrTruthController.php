@@ -118,4 +118,9 @@ class MythOrTruthController extends Controller
 
         return redirect()->route('mythsortruths.index');
     }
+
+    public function showMot()
+    {
+        return MythOrTruth::all();
+    }
 }

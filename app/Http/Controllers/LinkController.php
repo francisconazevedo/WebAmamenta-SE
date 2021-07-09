@@ -106,4 +106,10 @@ class LinkController extends Controller
         Session::flash('flash_message', 'Link removido com sucesso!');
         return redirect()->route('links.index');
     }
+
+    public function showLink()
+    {
+        return Link::all();
+
+    }
 }
