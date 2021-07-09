@@ -10,13 +10,15 @@ class Link extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $primaryKey = 'id';
+
     /**
      * Fillable fields
      *
      * @var array
      */
 
-    protected $primaryKey = 'id';
     protected $fillable = [
         'title',
         'description',

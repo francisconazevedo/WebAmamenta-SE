@@ -24,6 +24,8 @@
             @method('PUT')
 
             <div class="card-body">
+                <input type="hidden" value="{{ $mythOrTruth->id }}" class="form-control" id="id" name="id">
+
                 <div class="form-group">
                     <label for="title"><strong>Pergunta *</strong></label>
                     <input type="text" value="{{ $mythOrTruth->assumption }}" class="form-control" id="assumption" name="assumption" required>

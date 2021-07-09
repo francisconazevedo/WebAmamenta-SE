@@ -25,9 +25,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('v1')->group(function (){
-   Route::get('donaters', 'ConfigurationController@howDonate')->only('store');
-   Route::get('milkbanks', 'ConfigurationController@howDonate')->only('index');
-   Route::get('myths-or-truths', 'ConfigurationController@howDonate')->only('index');
-   Route::get('links', 'ConfigurationController@howDonate')->only('index');
-   Route::get('how-donate', 'ConfigurationController@howDonate');
+   Route::get('donaters', [LinkController::class, 'showDonate']);
+   Route::get('milkbanks', [MilkbankController::class, 'showMilkbank']);
+   Route::get('myths-or-truths', [MythOrTruthController::class, 'showMot']);
+   Route::get('links', [LinkController::class, 'showlink']);
+   Route::get('how-donate', [ConfigurationController::class, 'howDonate']);
 });

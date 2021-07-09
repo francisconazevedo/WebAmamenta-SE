@@ -36,7 +36,7 @@
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" ata-confirm="Tem certeza?" style="background: #ff6561; border-color: #ff6561"
+                            <button type="submit" data-confirm="Tem certeza?" style="background: #ff6561; border-color: #ff6561"
                                     class="btn btn-sm btn-danger" rel="nofollow"
                                     data-method="delete" >
                                 <i class="far fa-trash-alt" aria-hidden="true"></i>

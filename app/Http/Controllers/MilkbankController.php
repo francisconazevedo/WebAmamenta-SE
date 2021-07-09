@@ -46,8 +46,12 @@ class MilkbankController extends Controller
             'complement' => 'required',
             'contact' => 'required',
         ]);
+        $data = $request->all();
 
-        Milkbank::create($request->all());
+        if ($request->photo->isValid())
+            $data['photo'] = $request->file('photo')->store('milkbanks');
+
+        Milkbank::create($data);
 
         Session::flash('flash_message', 'Milkbank adicionado com sucesso!');
 
@@ -92,7 +96,11 @@ class MilkbankController extends Controller
             'complement' => 'required',
             'contact' => 'required',
         ]);
-        $milkbank->update($request->all());
+
+        if ($request->photo->isValid())
+            $data['photo'] = $request->file('photo')->store('milkbanks');
+
+        $milkbank->update($data);
 
         Session::flash('flash_message', 'Milkbank editado com sucesso!');
         return redirect()->route('milkbanks.index');

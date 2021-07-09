@@ -22,6 +22,7 @@ class Milkbank extends Model
         'address',
         'number',
         'complement',
-        'contact'
+        'contact',
+        'photo'
     ];
 }

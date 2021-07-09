@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MythOrTruth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use League\Flysystem\Exception;
 
 class MythOrTruthController extends Controller
 {
@@ -33,7 +34,7 @@ class MythOrTruthController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -55,7 +56,7 @@ class MythOrTruthController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MythOrTruth  $mythOrTruth
+     * @param \App\Models\MythOrTruth $mythOrTruth
      * @return \Illuminate\Http\Response
      */
     public function show(MythOrTruth $mythOrTruth)
@@ -66,7 +67,7 @@ class MythOrTruthController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MythOrTruth  $mythOrTruth
+     * @param \App\Models\MythOrTruth $mythOrTruth
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -78,9 +79,9 @@ class MythOrTruthController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MythOrTruth  $mythOrTruth
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\MythOrTruth $mythOrTruth
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, MythOrTruth $mythOrTruth)
     {
@@ -89,7 +90,13 @@ class MythOrTruthController extends Controller
             'response' => 'required',
             'response_bool' => 'required',
         ]);
-        $mythOrTruth->update($request->all());
+        $mot = MythOrTruth::find($request->input('id'));
+
+        $mot->assumption = $request->input('assumption');
+        $mot->response = $request->input('response');
+        $mot->response_bool = $request->input('response_bool');
+
+        $mot->save();
 
         Session::flash('flash_message', 'Informação editada com sucesso!');
         return redirect()->route('mythsortruths.index');
@@ -98,14 +105,17 @@ class MythOrTruthController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MythOrTruth  $mythOrTruth
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\MythOrTruth $mythOrTruth
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(MythOrTruth $mythOrTruth)
+    public function destroy($mythOrTruth)
     {
-        $mythOrTruth->delete();
+        $mot = MythOrTruth::find($mythOrTruth);
+
+        $mot->delete();
 
         Session::flash('flash_message', 'Informação removida com sucesso!');
+
         return redirect()->route('mythsortruths.index');
     }
 }

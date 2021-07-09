@@ -87,6 +87,7 @@ class LinkController extends Controller
             'description' => 'required',
         ]);
 
+
         $link->update($request->all());
 
         Session::flash('flash_message', 'Link editado com sucesso!');
@@ -99,6 +100,7 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
+        dd($link);
         $link->delete();
 
         Session::flash('flash_message', 'Link removido com sucesso!');
