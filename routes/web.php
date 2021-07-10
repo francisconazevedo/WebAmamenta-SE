@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\MilkbankController;
+use App\Http\Controllers\DonaterController;
+use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\MythOrTruthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -31,5 +33,7 @@ Route::get('/logout', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::resource('/links', LinkController::class)->middleware('auth');
+Route::resource('/donaters', DonaterController::class)->middleware('auth');
+Route::resource('/configurations', ConfigurationController::class)->middleware('auth');
 Route::resource('/milkbanks', MilkbankController::class)->middleware('auth');
 Route::resource('mythsortruths', MythOrTruthController::class)->middleware('auth');

@@ -30,7 +30,7 @@
                     <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="title"><strong>Nome *</strong></label>
+                    <label for="title"><strong>Imagem *</strong></label>
                     <input type="file" class="form-control" id="photo" name="photo" required>
                 </div>
                 <div class="form-group">

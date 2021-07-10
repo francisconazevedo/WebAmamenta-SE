@@ -100,7 +100,6 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
-        dd($link);
         $link->delete();
 
         Session::flash('flash_message', 'Link removido com sucesso!');

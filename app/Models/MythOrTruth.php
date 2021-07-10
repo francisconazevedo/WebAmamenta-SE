@@ -11,13 +11,16 @@ class MythOrTruth extends Model
     use HasFactory;
     use SoftDeletes;
 
+    /**
+     * Fillable fields
+     *
+     * @var array
+     */
     protected $table = 'mythsortruths';
-
     protected $primaryKey = 'id';
     protected $fillable = [
         'assumption',
         'response',
         'response_bool'
     ];
-
 }

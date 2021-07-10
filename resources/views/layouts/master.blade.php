@@ -32,6 +32,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     data-accordion="false">
 
                     <li class="nav-item">
+                        <a href="/donaters" class="nav-link">
+                            <i class="nav-icon fas fa-user-friends"></i>
+                            <p>
+                                Doadoras
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="/links" class="nav-link">
                             <i class="nav-icon fas fa-link"></i>
                             <p>
@@ -56,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/configuration/1/edit" class="nav-link">
+                        <a href="{{ route('configurations.edit', 1) }}" class="nav-link">
                             <i class="nav-icon far fa-plus-square"></i>
                             <p>
                                 Configuração
@@ -67,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <form id="form-logout" method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <a class="nav-link" href="javascript:{}" onclick="document.getElementById('form-logout').submit();"><i class="nav-icon far fa-plus-square"></i>
+                            <a class="nav-link" href="javascript:{}" onclick="document.getElementById('form-logout').submit();"><i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
                                     Sair
                                 </p>

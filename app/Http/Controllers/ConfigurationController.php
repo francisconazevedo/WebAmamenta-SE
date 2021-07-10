@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Configuration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ConfigurationController extends Controller
 {
@@ -55,9 +56,10 @@ class ConfigurationController extends Controller
      * @param  \App\Models\Configuration  $configuration
      * @return \Illuminate\Http\Response
      */
-    public function edit(Configuration $configuration)
+    public function edit($id)
     {
-        return $configuration;
+        $conf = Configuration::where('id', $id)->first();
+        return view('configurations.edit', compact('conf'));
     }
 
     /**
@@ -69,7 +71,15 @@ class ConfigurationController extends Controller
      */
     public function update(Request $request, Configuration $configuration)
     {
-        return [$request, $configuration];
+        $request->validate([
+            'application_name' => 'required',
+            'howtodonate' => 'required',
+        ]);
+
+        $configuration->update($request->all());
+
+        Session::flash('flash_message', 'Configuração editada com sucesso!');
+        return redirect()->route('configurations.edit', 1);
     }
 
     /**

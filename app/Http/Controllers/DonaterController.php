@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Donater;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class DonaterController extends Controller
 {
@@ -14,7 +15,9 @@ class DonaterController extends Controller
      */
     public function index()
     {
-        //
+        $donaters = Donater::all();
+
+        return view('donaters.index', compact('donaters'));
     }
 
     /**
@@ -47,7 +50,6 @@ class DonaterController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
