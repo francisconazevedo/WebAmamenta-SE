@@ -41,7 +41,7 @@ class LinkController extends Controller
         $request->validate([
             'title' => 'required',
             'link' => 'required',
-            'description' => 'required',
+            'description' => 'required|size:500',
         ]);
 
         Link::create($request->all());
@@ -84,7 +84,7 @@ class LinkController extends Controller
         $request->validate([
             'title' => 'required',
             'link' => 'required',
-            'description' => 'required',
+            'description' => 'required|size:500',
         ]);
 
 
