@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="title"><strong>Imagem *</strong></label>
-                    <input type="file" class="form-control" id="photo" name="photo" required>
+                    <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control" id="photo" name="photo" required>
                 </div>
                 <div class="form-group">
                     <label for="title"><strong>CEP *</strong></label>

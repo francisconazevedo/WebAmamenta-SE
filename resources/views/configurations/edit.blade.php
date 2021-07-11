@@ -38,7 +38,7 @@
                         </div>
                     <div class="form-group">
                         <label for="title"><strong>Logo *</strong></label>
-                        <input type="file" class="form-control" name="logo_name" required>
+                        <input type="file"  accept="image/png, image/jpg, image/jpeg" class="form-control" name="logo_name" required>
                     </div>
                     <div class="form-group">
                         <label for="title"><strong>Como doar *</strong></label>
