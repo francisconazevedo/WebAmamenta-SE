@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <label for="ckeditor">Descrição *</label>
-                    <textarea class="form-control" id="description" name="description"></textarea>
+                    <textarea class="form-control" maxlength="500" id="description" name="description"></textarea>
                 </div>
             </div>
             <!-- /.card-body -->
@@ -47,8 +47,5 @@
     </div>
     <!-- /.card -->
 </div>
-<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('description');
-</script>
+
 @endsection
