@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <label for="ckeditor">Descrição *</label>
-                    <textarea class="form-control" maxlength="500" id="description" name="description"></textarea>
+                    <textarea class="form-control" maxlength="200" id="description" name="description"></textarea>
                 </div>
             </div>
             <!-- /.card-body -->
