@@ -32,6 +32,8 @@
                     <label for="title"><strong>Imagem *</strong></label>
                     <input type="file" accept="image/png, image/jpg, image/jpeg" class="form-control" id="photo" name="photo" required>
                 </div>
+                <img src="{{asset('storage/'.$milkbank->photo) }}" alt="Girl in a jacket" width="500" height="600">
+
                 <div class="form-group">
                     <label for="title"><strong>CEP *</strong></label>
                     <input type="text" class="form-control" value="{{ $milkbank->cep }}" id="cep" name="cep" required>
