@@ -79,7 +79,8 @@ class ConfigurationController extends Controller
         $configuration->update($request->all());
 
         Session::flash('flash_message', 'Configuração editada com sucesso!');
-        return redirect()->route('configurations.edit', 1);
+
+        return view('home');
     }
 
     /**
