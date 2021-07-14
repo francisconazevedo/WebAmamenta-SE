@@ -96,6 +96,6 @@ class ConfigurationController extends Controller
 
     public function howDonate()
     {
-        return true;
+        return Configuration::where('id', 1)->first();;
     }
 }
